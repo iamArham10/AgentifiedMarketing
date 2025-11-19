@@ -12,6 +12,7 @@ import CampaignMonitoring from "@/pages/CampaignMonitoring";
 import ApprovalQueue from "@/pages/ApprovalQueue";
 import Analytics from "@/pages/Analytics";
 import Config from "@/pages/Config";
+import Settings from "@/pages/Settings";
 
 // Placeholder for missing pages
 const PlaceholderPage = ({ title }: { title: string }) => (
@@ -44,9 +45,7 @@ function Router() {
             {/* Redirect legacy route to new hub */}
             <AgentHub />
         </Route>
-        <Route path="/settings">
-          <PlaceholderPage title="Settings" />
-        </Route>
+        <Route path="/settings" component={Settings} />
         
         <Route component={NotFound} />
       </Switch>

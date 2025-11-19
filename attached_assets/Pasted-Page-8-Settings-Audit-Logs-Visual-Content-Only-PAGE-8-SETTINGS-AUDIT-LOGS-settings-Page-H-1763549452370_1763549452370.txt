@@ -1,0 +1,604 @@
+Page 8: Settings & Audit Logs - Visual Content Only
+PAGE 8: SETTINGS & AUDIT LOGS (/settings)
+Page Header
+
+Title: "Settings & Audit Logs"
+Subtitle: "Manage your account, security, and system preferences"
+Right side: [Export Logs] button (only visible on Audit Logs tab)
+
+TAB NAVIGATION
+
+4 Tabs (horizontal):
+- Account
+- Security  
+- Preferences
+- Audit Logs
+
+TAB 1: ACCOUNT SETTINGS
+Left Column (60% width)
+
+Profile Information Section:
+
+    Profile Photo Upload Area
+        Circular area (120px diameter)
+        If photo exists: show photo
+        If no photo: show user icon placeholder
+        Hover text: "Change Photo"
+    Full Name Field
+        Label: "Full Name"
+        Input with current value: "Sarah Mitchell"
+    Email Address Field
+        Label: "Email Address"
+        Input with value: "sarah@brand.com"
+        Lock icon on right (disabled field)
+        Helper text below: "Contact support to change email"
+    Job Title Field
+        Label: "Job Title"
+        Input with value: "Marketing Manager"
+    Company Field
+        Label: "Company"
+        Input with value: "EcoFashion Brand"
+
+Account Actions Section:
+
+    Change Password Button
+        Text: "Change Password"
+        Lock icon
+    Delete Account Button
+        Text: "Delete Account"
+        Trash icon
+    Save Changes Button
+        Text: "Save Changes"
+        Bottom of section
+
+Right Column (40% width)
+
+Account Preview Card:
+
+    Profile photo (80px circle)
+    Name: "Sarah Mitchell"
+    Email: "sarah@brand.com"
+    Horizontal divider line
+
+Account Information:
+
+    "Member since" label → "Jan 15, 2024"
+    "Last login" label → "Nov 19, 2025" with "14:32 UTC" below
+    "Subscription" label → "Pro Plan" with green status dot
+
+Button:
+
+    [Manage Plan]
+
+TAB 2: SECURITY SETTINGS
+Full Width Layout (max 700px)
+
+1. Two-Factor Authentication Card
+
+Header:
+
+    Left: "Two-Factor Authentication"
+    Right: "Enabled" badge (or "Disabled")
+
+Content:
+
+    Description: "Add an extra layer of security to your account with 2FA"
+    Link: "Configure 2FA →"
+
+2. Session Management Card
+
+Header:
+
+    Title: "Session Management"
+    Subtitle: "You are currently signed in on 3 devices"
+
+Active Sessions List:
+
+Session 1:
+
+    Desktop icon + "Chrome on Windows"
+    Status: "Active now"
+    Location: "Lahore, PK"
+    [Revoke] button
+
+Session 2:
+
+    Mobile icon + "Safari on iPhone"
+    Status: "2 hours ago"
+    Location: "Lahore, PK"
+    [Revoke] button
+
+Session 3:
+
+    Desktop icon + "Firefox on macOS"
+    Status: "1 day ago"
+    Location: "Lahore, PK"
+    [Revoke] button
+
+Footer:
+
+    [Sign Out All Other Devices] button
+
+3. API Keys & Tokens Card
+
+Header:
+
+    Title: "Personal Access Tokens"
+    Subtitle: "Generate tokens for API access"
+
+Token List:
+
+Token 1:
+
+    Token: "sk_prod_abc123...xyz" (truncated)
+    Metadata: "Created 2mo ago | Last used: 3 days ago"
+    Actions: [Regenerate] [Delete]
+
+Footer:
+
+    [+ Generate New Token] button
+
+4. Security Logs Card
+
+Header:
+
+    Title: "Recent Security Events"
+
+Event List:
+
+    "Nov 19, 14:32 ✓ Successful login"
+    "Nov 18, 09:15 ✓ Password changed"
+    "Nov 17, 22:03 ⚠️ Failed login attempt"
+
+Footer:
+
+    Link: "View All Security Logs →"
+
+TAB 3: PREFERENCES
+Left Column (60% width)
+
+Appearance Section:
+
+    Theme Selection
+        Label: "Theme"
+        Radio options:
+            Dark Mode (default) - selected
+            Light Mode
+            Auto (system)
+
+Notifications Section:
+
+    Email Notifications
+        Label: "Email Notifications"
+        Checkboxes:
+            ☑ Campaign approvals needed
+            ☑ Agent failures & errors
+            ☑ Weekly performance reports
+            ☐ Marketing tips
+    In-App Notifications
+        Label: "In-App Notifications"
+        Checkboxes:
+            ☑ Real-time agent updates
+            ☑ Consensus decisions
+            ☑ Campaign deployments
+
+Display Preferences Section:
+
+    Default Dashboard View
+        Label: "Default Dashboard View"
+        Dropdown showing: "Campaigns Overview"
+        Options: Campaigns Overview, Agent Network, Analytics, Recent Activity
+    Date Format
+        Label: "Date Format"
+        Dropdown showing: "MM/DD/YYYY"
+        Options: MM/DD/YYYY, DD/MM/YYYY, YYYY-MM-DD
+    Timezone
+        Label: "Timezone"
+        Dropdown showing: "Asia/Karachi (PKT)"
+        Shows all world timezones
+
+Data & Privacy Section:
+
+    Privacy Checkboxes
+        ☑ Share analytics for platform improvement
+            Sub-text: "Help us improve by sharing anonymous usage data"
+        ☐ Participate in beta features
+            Sub-text: "Get early access to new features before public release"
+    Save Preferences Button
+        Text: "Save Preferences"
+
+Right Column (40% width)
+
+Preview Card:
+
+    Small preview thumbnail (200×150px) showing dashboard preview
+    Text: "Your current settings will affect how you receive updates and alerts"
+
+TAB 4: AUDIT LOGS
+Full Width Layout
+
+Filter Bar (top):
+
+Left side filters:
+
+    Dropdown: "All Actions"
+        Options: All, Approvals, Logins, Changes, Deployments, Errors
+    Dropdown: "All Users"
+        Options: All, sarah@brand.com, system, admin
+    Dropdown: "Last 30 Days"
+        Options: Last 7 days, Last 30 days, Last 90 days, Custom range
+    Search input: "Search logs..." with search icon
+
+Right side:
+5. [Export Logs] button
+
+Audit Log Table:
+
+Table Headers:
+
+    Timestamp (25%)
+    User (20%)
+    Action (35%)
+    Details (20%)
+
+Log Entry 1:
+
+    Timestamp: "Nov 19, 15:52"
+    User: "sarah@brand"
+    Action: "✓ Approved Campaign CM-2847"
+    Metadata: "IP: 103.255.x.x | Location: Lahore, PK"
+    Link: [View Details]
+
+Log Entry 2:
+
+    Timestamp: "Nov 19, 15:48"
+    User: "system"
+    Action: "🤖 Consensus reached for CM-2847"
+    Metadata: "Agents: 3/3 voted, 89.7% confidence"
+    Link: [View Details]
+
+Log Entry 3:
+
+    Timestamp: "Nov 19, 14:32"
+    User: "sarah@brand"
+    Action: "🔐 Logged in"
+    Metadata: "IP: 103.255.x.x | Device: Chrome/Windows"
+    Link: [View Details]
+
+Log Entry 4:
+
+    Timestamp: "Nov 18, 09:15"
+    User: "sarah@brand"
+    Action: "⚙️ Changed password"
+    Link: [View Details]
+
+Log Entry 5:
+
+    Timestamp: "Nov 18, 08:42"
+    User: "sarah@brand"
+    Action: "✓ Approved Campaign CM-2839"
+    Metadata: "IP: 103.255.x.x | Location: Lahore, PK"
+    Link: [View Details]
+
+Log Entry 6:
+
+    Timestamp: "Nov 17, 22:03"
+    User: "unknown"
+    Action: "⚠️ Failed login attempt"
+    Metadata: "IP: 45.132.x.x | Location: Unknown"
+    Link: [View Details]
+
+Log Entry 7:
+
+    Timestamp: "Nov 17, 16:20"
+    User: "deployment_agent_06"
+    Action: "🚀 Deployed Campaign CM-2839 to Meta"
+    Metadata: "Campaign ID: 120948273649 | Status: Success"
+    Link: [View Details]
+
+Log Entry 8:
+
+    Timestamp: "Nov 17, 16:15"
+    User: "sarah@brand"
+    Action: "✓ Approved Campaign CM-2839"
+    Metadata: "Consensus: 3/3 agents, 92.4% confidence"
+    Link: [View Details]
+
+Pagination (bottom):
+
+    [←] [1] [2] [3] ... [15] [→]
+    Current page highlighted
+
+MODALS
+Change Password Modal
+
+    Title: "Change Password"
+    Field 1: "Current Password" (password input)
+    Field 2: "New Password" (password input)
+    Field 3: "Confirm New Password" (password input)
+    Buttons: [Cancel] [Change Password]
+
+Delete Account Confirmation Modal
+
+    Warning icon
+    Title: "Delete Account"
+    Warning text: "This action cannot be undone. All your campaigns, settings, and data will be permanently deleted."
+    Field: "Type your email to confirm" (text input)
+    Required text to type: "sarah@brand.com"
+    Buttons: [Cancel] [Delete Account]
+
+Configure 2FA Modal
+
+    Title: "Enable Two-Factor Authentication"
+    Step 1 text: "Scan this QR code with your authenticator app"
+    QR code image (200×200px)
+    Alternative: "Or enter this code manually: ABCD-EFGH-IJKL-MNOP"
+    Step 2 text: "Enter the 6-digit code from your app"
+    Field: 6-digit code input
+    Buttons: [Cancel] [Enable 2FA]
+
+Generate Token Modal
+
+    Title: "Generate New Access Token"
+    Field: "Token Name" (text input)
+    Placeholder: "e.g., Production API Access"
+    Info text: "Choose a descriptive name to remember what this token is for"
+    Field: "Expiration" (dropdown)
+        Options: Never, 30 days, 90 days, 1 year
+    Buttons: [Cancel] [Generate Token]
+
+After Generation (same modal):
+
+    Success icon
+    Title: "Token Generated Successfully"
+    Warning text: "Copy this token now. You won't be able to see it again!"
+    Token display: "sk_prod_abc123def456ghi789jkl012mno345pqr678"
+    [Copy to Clipboard] button
+    Info text: "Store this token securely. Treat it like a password."
+    Button: [Done]
+
+Audit Log Detail Modal
+
+    Title: "Audit Log Details"
+
+Summary Section:
+
+    Action: "Approved Campaign CM-2847" (large text)
+    Timestamp: "Nov 19, 2025 at 15:52:33 UTC"
+    User: Avatar icon + "sarah@brand.com"
+
+Details Grid (2 columns):
+
+Left column:
+
+    "User Information"
+        Email: sarah@brand.com
+        Name: Sarah Mitchell
+        Role: Marketing Manager
+    "Location & Device"
+        IP Address: 103.255.47.142
+        Location: Lahore, Punjab, Pakistan
+        Device: Chrome 119 on Windows 11
+
+Right column:
+
+    "Action Details"
+        Type: Campaign Approval
+        Resource: Campaign CM-2847
+        Status: Success
+        Duration: 1.2 seconds
+    "Agent Context"
+        Consensus: 3/3 agents
+        Confidence: 89.7%
+        Strategists: Agent #1, #4, #2
+
+Full Event Data Section:
+
+    Expandable section: "View Raw JSON Data"
+    When expanded: JSON syntax-highlighted code block
+    [Copy JSON] button
+
+Related Events Timeline:
+
+    Title: "Related Events"
+    Timeline showing:
+        15:35 - Campaign Created
+        15:40 - Agents Assigned
+        15:48 - Consensus Reached
+        15:52 - Approved (current)
+        15:53 - Deployment Initiated
+        15:54 - Live on Meta & Twitter
+
+Footer:
+
+    [Close] button
+
+Sign Out All Devices Confirmation Modal
+
+    Warning icon
+    Title: "Sign Out All Other Devices"
+    Text: "This will sign you out of all devices except this one. You'll need to log in again on those devices."
+    List of devices to be signed out:
+        Safari on iPhone (2 hours ago)
+        Firefox on macOS (1 day ago)
+    Buttons: [Cancel] [Sign Out All]
+
+Revoke Session Confirmation Modal
+
+    Warning icon
+    Title: "Revoke Session"
+    Text: "This will immediately sign out this device. The user will need to log in again."
+    Device info:
+        Safari on iPhone
+        Last active: 2 hours ago
+        Location: Lahore, PK
+    Buttons: [Cancel] [Revoke]
+
+Delete Token Confirmation Modal
+
+    Warning icon
+    Title: "Delete Access Token"
+    Text: "Any applications using this token will immediately lose access. This action cannot be undone."
+    Token info:
+        Name: sk_prod_abc123...xyz
+        Created: 2 months ago
+        Last used: 3 days ago
+    Buttons: [Cancel] [Delete Token]
+
+USER INTERACTION FLOWS
+Flow 1: Change Password
+
+    User on Account tab
+    Clicks [Change Password] button
+    Modal opens
+    User enters current password: "OldPass123!"
+    User enters new password: "NewSecurePass456!"
+    User confirms new password: "NewSecurePass456!"
+    Clicks [Change Password]
+    Modal shows loading spinner
+    Modal closes
+    Toast notification: "Password changed successfully"
+
+Flow 2: Enable 2FA
+
+    User on Security tab
+    Sees "Two-Factor Authentication" card with "Disabled" badge
+    Clicks [Configure 2FA →]
+    Modal opens with QR code
+    User opens authenticator app on phone
+    Scans QR code
+    Enters 6-digit code: "123456"
+    Clicks [Enable 2FA]
+    Modal shows loading
+    Modal closes
+    Badge updates to "Enabled ✓"
+    Toast notification: "Two-factor authentication enabled"
+
+Flow 3: Generate API Token
+
+    User on Security tab
+    Scrolls to "API Keys & Tokens" card
+    Clicks [+ Generate New Token]
+    Modal opens
+    User types token name: "Production API Access"
+    Selects expiration: "Never"
+    Clicks [Generate Token]
+    Modal shows success with full token: "sk_prod_abc123..."
+    User clicks [Copy to Clipboard]
+    Toast notification: "Token copied to clipboard"
+    User clicks [Done]
+    Modal closes
+    New token appears in list
+
+Flow 4: Update Preferences
+
+    User on Preferences tab
+    User unchecks "Marketing tips" under Email Notifications
+    User changes "Default Dashboard View" to "Agent Network"
+    User changes "Timezone" to "America/New_York (EST)"
+    User checks "Participate in beta features"
+    Clicks [Save Preferences]
+    Button shows "Saving..." with spinner
+    Button shows "Saved ✓" briefly
+    Toast notification: "Preferences saved successfully"
+    Next login will show Agent Network as default dashboard
+
+Flow 5: Filter Audit Logs
+
+    User on Audit Logs tab
+    Sees full list of all log entries
+    Clicks "All Actions" dropdown
+    Selects "Approvals"
+    Table filters to show only approval actions (entries 1, 5, 8)
+    User types "CM-2847" in search box
+    Table further filters to show only entries related to campaign CM-2847 (entries 1, 2)
+    User clicks [Export Logs]
+    Toast notification: "Generating export..."
+    File downloads: "audit_logs_approvals_CM-2847_2025-11-19.csv"
+    Toast notification: "Export complete"
+
+Flow 6: View Audit Log Details
+
+    User on Audit Logs tab
+    Sees log entry: "Nov 19, 15:52 | sarah@brand | ✓ Approved Campaign CM-2847"
+    Clicks [View Details]
+    Detail modal opens
+    User sees full information:
+        User who approved: Sarah Mitchell
+        IP address: 103.255.47.142
+        Location: Lahore, Pakistan
+        Agent consensus: 3/3 agents, 89.7% confidence
+    User expands "View Raw JSON Data"
+    Sees full JSON event payload
+    User clicks [Copy JSON]
+    Toast notification: "JSON copied to clipboard"
+    User clicks [Close]
+    Modal closes, back to log table
+
+Flow 7: Revoke Session
+
+    User on Security tab
+    Sees "Session Management" card with 3 active sessions
+    Notices suspicious session: "Firefox on macOS" (1 day ago) but user doesn't use Firefox
+    Clicks [Revoke] button next to that session
+    Confirmation modal opens: "Revoke Session"
+    User reviews device info
+    Clicks [Revoke]
+    Modal closes
+    Session disappears from list with fade animation
+    Session count updates: "You are currently signed in on 2 devices"
+    Toast notification: "Session revoked successfully"
+    New entry appears in Security Logs: "Session revoked for Firefox/macOS"
+
+Flow 8: Delete Account (Full Flow)
+
+    User on Account tab
+    Scrolls to Account Actions
+    Clicks [Delete Account] (red button)
+    Confirmation modal opens with warning
+    User reads warning: "This action cannot be undone..."
+    Modal requires typing email to confirm
+    User types: "sarah@brand.com"
+    [Delete Account] button becomes enabled
+    User clicks [Delete Account]
+    Second confirmation modal: "Are you absolutely sure?"
+    User clicks [Yes, Delete My Account]
+    Loading overlay appears: "Deleting your account..."
+    Account deletion process:
+        Delete all campaigns
+        Delete all agent data
+        Delete all settings
+        Revoke all sessions
+        Revoke all API tokens
+    User automatically logged out
+    Redirect to login page
+    Message: "Your account has been deleted successfully"
+
+EMPTY STATES
+No Active Sessions (Security Tab)
+
+    Icon: Shield-off (large, centered)
+    Text: "No active sessions"
+    Sub-text: "You are not signed in on any devices"
+
+No API Tokens (Security Tab)
+
+    Icon: Key (large, centered)
+    Text: "No access tokens yet"
+    Sub-text: "Generate your first token to access the API"
+    Button: [Generate Token]
+
+No Security Events (Security Tab)
+
+    Icon: Activity (large, centered)
+    Text: "No recent security events"
+    Sub-text: "Your security log is clean"
+
+No Audit Logs Found (Audit Logs Tab, after filtering)
+
+    Icon: Search (large, centered)
+    Text: "No logs found"
+    Sub-text: "Try adjusting your filters or search term"
+    Button: [Clear Filters]
+
+This is the complete visual content specification for the Settings & Audit Logs page!
