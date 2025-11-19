@@ -1,0 +1,61 @@
+───────────────────────────────────────────────────────────────────────────
+PAGE 3: AGENT ORCHESTRATION HUB (/agent-hub)
+───────────────────────────────────────────────────────────────────────────
+
+LAYOUT: Full-screen graph visualization
+
+TOP CONTROL BAR:
+- Campaign filter dropdown: "All Campaigns" / "CM-2847" / "CM-2839"
+- Layer toggle buttons: [Creators] [Critics] [Strategists] [Support] (all active: blue)
+- Time scrubber slider (bottom of bar): "Replay last 6 hours"
+- "Pause Real-Time" toggle (top-right)
+
+MAIN GRAPH AREA (force-directed network):
+Nodes:
+- 15 circular nodes scattered across canvas
+- Size: 48-64px (varies by trust score)
+- Colors: Blue (5 creator agents), Orange (3 critic agents), Purple (3 strategist agents), Gray (4 support agents)
+- Each node: agent type icon centered (✍️ 🎨 🎯 for creators, ⚖️ for critics, 🧠 for strategists)
+- Label below each: "Copywriter #5", "Designer #9", "Critic #2", etc.
+- Active nodes: pulsing glow animation (blue halo, 0-8px, 2s infinite)
+- Badge overlay: "✓ Task complete" or "⚙️ Processing..."
+
+Edges (connections):
+- Animated lines between nodes (moving dots along path)
+- Line thickness varies (2-4px based on message frequency)
+- Arrow heads pointing to target
+- Dashed lines for failed/retry messages (red color)
+- Solid lines for successful messages (blue color)
+
+INTERACTIONS:
+- Click node: open right inspector panel with agent details
+- Click edge: open inspector with message payload
+- Drag to pan, scroll to zoom
+- Hover node: tooltip with "Agent ID, Type, Current Task, Trust Score: 87/100"
+
+RIGHT INSPECTOR PANEL (slides in on selection):
+When Agent Clicked:
+- Agent avatar/icon (large, top)
+- "Copywriter Agent #5" (title)
+- Trust Score: circular progress ring showing 91/100 (green gradient)
+- Stats grid:
+  • Uptime: 99.2%
+  • Current Task: "Awaiting critic feedback"
+  • Avg Response: 420ms
+  • Success Rate: 94%
+- "Recent Messages" accordion (last 5):
+  "15:48:43 → Critic #2: Submitted 5 variants for CM-2847"
+  "15:42:10 → Critic #1: Submitted 3 variants for CM-2839"
+- Close X button (top-right)
+
+When Edge Clicked:
+- Message ID: MSG-847291
+- From: Copywriter #5 → To: Critic #2
+- Timestamp: 2025-11-19 15:48:43 UTC
+- Type badge: "CONTENT_SUBMISSION" (blue badge)
+- Status: "DELIVERED ✓" (green badge)
+- JSON payload viewer (expandable, syntax highlighted):
+{
+"variants": [...],
+"reasoning": "Generated 5 variants..."
+}

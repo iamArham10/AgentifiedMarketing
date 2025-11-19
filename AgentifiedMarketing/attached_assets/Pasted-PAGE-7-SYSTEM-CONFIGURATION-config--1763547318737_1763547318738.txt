@@ -1,0 +1,101 @@
+PAGE 7: SYSTEM CONFIGURATION (/config)
+───────────────────────────────────────────────────────────────────────────
+
+LAYOUT: Tab-based settings
+
+TABS:
+[Agent Pool] [API Integrations] [Brand Guidelines] [Trust Settings]
+
+TAB 1 - AGENT POOL MANAGEMENT (active):
+Top: "Add New Agent" button (blue, top-right)
+
+Agent list table:
+Columns: Agent ID | Type | Status | Trust Score | Uptime | Actions
+Rows (10 agents):
+copywriter_05 | Copywriter | 🟢 Online | 91/100 (progress bar) | 99.2% | [Deactivate] [Remove] [Clone]
+designer_09 | Designer | 🟢 Online | 88/100 | 98.7% | [Deactivate] [Remove] [Clone]
+critic_02 | Critic | 🔴 Offline | 89/100 | 95.1% | [Restart] [Remove] [Clone]
+
+"Add New Agent" click:
+- Modal with form:
+  Dropdown: "Agent Type" (Copywriter, Designer, Targeting, Critic, Strategist, Deployment, Analytics)
+  Number input: "Initial Trust Score" (default: 50, range: 0-100)
+  Dropdown: "Layer Assignment" (Creator, Critic, Strategist, Support)
+  [Cancel] [Create Agent] buttons
+- On submit: toast "✅ Copywriter Agent #12 created", new row added with fade-in
+
+TAB 2 - API INTEGRATIONS:
+3 platform cards (horizontal):
+
+CARD 1 - META:
+- Meta logo (large, top)
+- Status badge: "🟢 Connected" (green) or "🔴 Disconnected" (red)
+- Last sync: "2 mins ago"
+- Rate limit bar: "450/500 requests used today" (90% filled, amber)
+- [Reconnect] [Test Connection] buttons
+- If disconnected: [Connect with OAuth] button (blue)
+
+CARD 2 - TWITTER:
+- Same structure as Meta
+- Status: "🟢 Connected"
+- Rate limit: "230/500" (46% filled, green)
+
+CARD 3 - LINKEDIN:
+- Status: "🔴 Disconnected"
+- [Connect with OAuth] button prominent
+
+OAuth flow simulation:
+- Click Connect → modal "Redirecting to Meta..." → 2s delay → toast "✅ Meta connected successfully", card updates
+
+TAB 3 - BRAND GUIDELINES:
+Top: "Upload Guidelines" button + drag-drop zone
+
+Uploaded files list:
+- "Brand_Guide_2025.pdf" (thumbnail, 48px)
+  [Preview] [Extract Guidelines] [Delete] buttons
+- "Logo_Assets.zip"
+  [Download] [Delete]
+
+"Extract Guidelines" click:
+- Show loading: "🔄 Extracting guidelines with NLP..."
+- 3s delay → show extracted data in editable form:
+  
+  Tone: [Professional yet approachable] (input)
+  Prohibited Words: [Cheap, discount, limited time] (tag input, dismissible)
+  Color Palette:
+    #3B82F6 (swatch) [Primary Blue]
+    #10B981 (swatch) [Accent Green]
+    #1A2032 (swatch) [Background]
+    [+ Add Color]
+  
+  [Save Guidelines] button
+
+TAB 4 - TRUST & REPUTATION SETTINGS:
+Slider controls:
+
+1. "Initial Trust Score for New Agents"
+   Slider: 0 ←――●―― 100 (default: 50)
+   Current value displayed: "50/100"
+
+2. "Trust Decay Rate (penalty per failure)"
+   Slider: 0 ←●―――― 20 (default: 5)
+   "5 points per failure"
+
+3. "Reputation Weight in Consensus"
+   Slider: 0 ←―――――●100 (default: 75)
+   "75% - High influence"
+
+Info tooltips (i icons) with explanations
+
+[Reset to Defaults] button (secondary, left)
+[Save Changes] button (primary, right)
+
+"Reset All Scores" button (danger, bottom):
+- Click → confirmation modal: "⚠️ This will reset trust scores for ALL agents. Are you sure?"
+- [Cancel] [Confirm Reset]
+
+INTERACTIONS:
+- Tab clicks: switch content
+- Sliders: live value updates
+- Save Changes: toast "✅ Settings saved successfully"
+- Rate limit bars: update every 30s (simulate)

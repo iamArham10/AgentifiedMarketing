@@ -1,0 +1,57 @@
+PAGE 6: ANALYTICS & INSIGHTS (/analytics)
+───────────────────────────────────────────────────────────────────────────
+
+TOP CONTROLS:
+- Date range selector: [Last 7 days ▼] [Last 30 days] [90 days] [Custom]
+- Filter: Campaign status checkboxes: ☑ Active ☑ Completed ☐ Paused
+- "Generate Report" button (top-right, secondary)
+
+DASHBOARD GRID:
+
+ROW 1 - GLOBAL KPIs (4 cards):
+Card 1: "47" (large), "Total Campaigns", "↑ 12 vs. last month"
+Card 2: "2.3 hrs" (large), "Avg Cycle Time", "↓ 35% vs. last month" (green)
+Card 3: "91%" (large), "Brand Alignment", "↑ 3%"
+Card 4: "99.1%" (large), "System Uptime", "(30-day rolling)"
+
+ROW 2 - AGENT EFFICIENCY HEATMAP:
+Table with color-coded cells:
+Headers (columns): Agent Type | Avg Response | Success Rate | Trust Score Trend
+Rows:
+- Copywriter: 420ms (green) | 94% (green) | ↑ +3 (green)
+- Designer: 890ms (amber) | 89% (amber) | ↑ +2 (green)
+- Critic: 310ms (green) | 96% (green) | ↑ +5 (green)
+- Strategist: 2.1s (green) | 91% (green) | ↑ +4 (green)
+
+Cell colors: Green (>90%), Amber (70-90%), Red (<70%)
+Hover: tooltip with details
+Click cell: opens Agent Performance Modal
+
+ROW 3 - CAMPAIGN PERFORMANCE TABLE:
+Sortable table:
+Columns: Campaign Name | CTR | Conversions | ROI | Status | Duration
+Rows (5 campaigns):
+"Q4 Sneaker Launch" | 3.94% ▁▂▃▅▆ | 147 | +284% | 🟢 Active | 7/14 d
+"Fall Promo" | 2.87% ▂▃▂▄▃ | 89 | +156% | ⚪ Completed | 14/14 d
+"Summer Sale" | 4.12% ▃▅▆▇▆ | 203 | +312% | ⚪ Completed | 14/14 d
+
+CTR column: mini sparkline chart (inline)
+Status: colored dot + text
+Click row: navigate to Campaign Monitoring
+
+[Export to CSV] button below table
+
+ROW 4 - INSIGHTS FEED:
+Card with header "💡 Auto-Generated Insights"
+3-4 insight cards:
+1. "Designer agents consistently perform best between 10-12 PM UTC (avg trust score: 94 vs. 87 overall)"
+2. "Campaigns targeting age 25-35 show 22% higher CTR than 18-24 segment"
+3. "Consensus time reduced by 35% after reputation threshold adjustment"
+
+Each insight: lightbulb icon, text (14px), timestamp "Generated 2h ago"
+
+INTERACTIONS:
+- Date range change: reload all data with transition
+- Heatmap cell click: modal showing "Copywriter Agent Performance Details" with charts
+- Campaign row click: navigate to monitoring
+- "Generate Report" → modal with checkboxes for sections to include → "Download PDF" button

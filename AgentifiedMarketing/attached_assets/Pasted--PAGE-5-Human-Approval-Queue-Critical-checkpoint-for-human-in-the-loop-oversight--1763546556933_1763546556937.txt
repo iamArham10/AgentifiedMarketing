@@ -1,0 +1,46 @@
+### **PAGE 5: Human Approval Queue**
+
+*Critical checkpoint for human-in-the-loop oversight.*
+
+### **Visual Layout:**
+
+- **Queue List (Left Panel, 40% width):**
+    - Card-based list of pending approvals
+    - Each card shows:
+        - Campaign name + ID
+        - Submission timestamp
+        - Priority badge (Standard/Expedited)
+        - Agent consensus confidence: "3/3 strategists approved (confidence: 94%)"
+        - Platform icons (where it will deploy)
+    - Sort controls: By date / By priority / By confidence
+- **Review Panel (Right Panel, 60% width):**
+    - **Campaign Summary:**
+        - Objective, target audience, budget, timeline
+    - **Content Preview:**
+        - Tabbed view: Ad Copy (all variants) | Visual Designs | Targeting Parameters
+        - Side-by-side comparison mode (select 2 variants to compare)
+    - **Agent Rationale Section:**
+        - Accordion list showing each agent's reasoning:
+            - "Copywriter #5: Selected tone to match Gen Z preferences (trust score: 91/100)"
+            - "Critic #2: Brand alignment score 96% — approved (trust score: 88/100)"
+            - "Strategist #1: Variant A predicted to yield 3.5% CTR based on historical data"
+    - **Decision Controls:**
+        - Large "Approve & Deploy" button (green)
+        - "Request Revisions" button (amber) → Opens feedback modal
+        - "Reject" button (red) → Requires rejection reason
+    - **Audit Trail Footer:**
+        - "This approval will be logged with your user ID and timestamp. View full audit log →"
+
+### **The Inputs (User Actions):**
+
+- Click queue card → Loads campaign details in review panel
+- Toggle between ad copy variants (tab clicks)
+- Expand agent rationale accordions to read full reasoning
+- Click "Approve & Deploy":
+    - Confirmation modal: "This will publish to Meta and Twitter. Confirm?"
+    - User clicks "Confirm"
+- Click "Request Revisions":
+    - Modal with text area: "Please improve the headline to be more action-oriented"
+    - Checkbox: "Route back to Copywriter Agent" ✓
+    - Checkbox: "Require new consensus vote" ✓
+    - Submit feedback
