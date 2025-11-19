@@ -1,0 +1,44 @@
+Two-Column Layout:
+- Left: Preferences form
+- Right: Preview/Help card
+
+┌─────────────────────────────────┬───────────────────────┐
+│  Appearance                     │   Preview             │
+│                                 │                       │
+│  Theme                          │   ┌─────────────┐    │
+│  ● Dark Mode (default)          │   │             │    │
+│  ○ Light Mode                   │   │  Dashboard  │    │
+│  ○ Auto (system)                │   │   Preview   │    │
+│                                 │   │             │    │
+│  Notifications                  │   └─────────────┘    │
+│                                 │                       │
+│  Email Notifications            │   Your current        │
+│  ☑ Campaign approvals needed    │   settings will       │
+│  ☑ Agent failures & errors      │   affect how you      │
+│  ☑ Weekly performance reports   │   receive updates     │
+│  ☐ Marketing tips               │   and alerts          │
+│                                 │                       │
+│  In-App Notifications           │                       │
+│  ☑ Real-time agent updates      │                       │
+│  ☑ Consensus decisions          │                       │
+│  ☑ Campaign deployments         │                       │
+│                                 │                       │
+│  Display Preferences            │                       │
+│                                 │                       │
+│  Default Dashboard View         │                       │
+│  [Campaigns Overview    ▼]      │                       │
+│                                 │                       │
+│  Date Format                    │                       │
+│  [MM/DD/YYYY           ▼]      │                       │
+│                                 │                       │
+│  Timezone                       │                       │
+│  [Asia/Karachi (PKT)   ▼]      │                       │
+│                                 │                       │
+│  Data & Privacy                 │                       │
+│                                 │                       │
+│  ☑ Share analytics for          │                       │
+│    platform improvement         │                       │
+│  ☐ Participate in beta features │                       │
+│                                 │                       │
+│           [Save Preferences]    │                       │
+└─────────────────────────────────┴───────────────────────┘
