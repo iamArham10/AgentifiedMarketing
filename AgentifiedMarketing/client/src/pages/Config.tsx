@@ -23,7 +23,8 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  X
+  X,
+  Bot
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -67,6 +68,9 @@ export default function Config() {
   const [agents, setAgents] = useState(INITIAL_AGENTS);
   const [showAddAgentModal, setShowAddAgentModal] = useState(false);
   const [newAgentType, setNewAgentType] = useState("Copywriter");
+  const [newAgentTrust, setNewAgentTrust] = useState(50);
+  const [newAgentLayer, setNewAgentLayer] = useState("Creator");
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   // Tab 2: Integrations
   const [integrations, setIntegrations] = useState({
@@ -99,13 +103,14 @@ export default function Config() {
       id: newId,
       type: newAgentType,
       status: "online",
-      trust: 50,
-      uptime: 100
+      trust: newAgentTrust,
+      uptime: 100,
+      layer: newAgentLayer
     };
     setAgents([...agents, newAgent]);
     toast({
       title: "Agent Created",
-      description: `✅ ${newAgentType} Agent #${newId.split('_')[1]} created successfully`,
+      description: `✅ ${newAgentType} Agent #${newId.split('_')[1]} created in ${newAgentLayer} layer with trust score ${newAgentTrust}`,
       className: "bg-emerald-500/10 border-emerald-500/20 text-white"
     });
   };
@@ -155,6 +160,44 @@ export default function Config() {
       description: "All agent trust scores have been reset to default.",
       className: "bg-amber-500/10 border-amber-500/20 text-white"
     });
+  };
+
+  const handleResetToDefaults = () => {
+    setTrustSettings({
+      initialScore: 50,
+      decayRate: 5,
+      reputationWeight: 75
+    });
+    toast({
+      title: "Settings Reset",
+      description: "Trust settings have been reset to defaults.",
+      className: "bg-blue-500/10 border-blue-500/20 text-white"
+    });
+  };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadedFiles = event.target.files;
+    if (!uploadedFiles || uploadedFiles.length === 0) return;
+    
+    Array.from(uploadedFiles).forEach(file => {
+      const newFile = {
+        id: files.length + Math.random(),
+        name: file.name,
+        size: `${(file.size / (1024 * 1024)).toFixed(1)} MB`,
+        type: file.name.endsWith('.pdf') ? 'pdf' : 'zip'
+      };
+      setFiles(prev => [...prev, newFile]);
+    });
+
+    toast({
+      title: "File Uploaded",
+      description: `✅ ${uploadedFiles.length} file(s) uploaded successfully`,
+      className: "bg-emerald-500/10 border-emerald-500/20 text-white"
+    });
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   return (
@@ -382,13 +425,34 @@ export default function Config() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left: Upload & List */}
             <div className="lg:col-span-1 space-y-6">
-              <Card className="bg-[#1A2032] border border-[#2D3548] border-dashed p-8 flex flex-col items-center justify-center text-center hover:bg-[#1A2032]/80 transition-colors cursor-pointer group">
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileUpload}
+                accept=".pdf,.docx,.zip"
+                multiple
+                className="hidden"
+              />
+              <Card 
+                className="bg-[#1A2032] border border-[#2D3548] border-dashed p-8 flex flex-col items-center justify-center text-center hover:bg-[#1A2032]/80 transition-colors cursor-pointer group"
+                onClick={() => fileInputRef.current?.click()}
+              >
                 <div className="w-12 h-12 rounded-full bg-[#0A0E1A] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Upload className="w-6 h-6 text-blue-500" />
                 </div>
                 <h3 className="text-sm font-medium text-white">Upload Guidelines</h3>
                 <p className="text-xs text-muted-foreground mt-1 mb-4">Drag & drop PDF, DOCX, or ZIP</p>
-                <Button variant="outline" size="sm" className="border-[#2D3548] text-white hover:bg-[#0A0E1A]">Browse Files</Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="border-[#2D3548] text-white hover:bg-[#0A0E1A]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    fileInputRef.current?.click();
+                  }}
+                >
+                  Browse Files
+                </Button>
               </Card>
 
               <div className="space-y-3">
@@ -510,7 +574,7 @@ export default function Config() {
                           <span className="font-mono text-xl text-primary font-bold">{trustSettings.initialScore}/100</span>
                        </div>
                        <Slider 
-                          defaultValue={[trustSettings.initialScore]} 
+                          value={[trustSettings.initialScore]} 
                           max={100} 
                           step={1} 
                           className="py-2"
@@ -529,7 +593,7 @@ export default function Config() {
                           <span className="font-mono text-xl text-amber-500 font-bold">{trustSettings.decayRate} pts</span>
                        </div>
                        <Slider 
-                          defaultValue={[trustSettings.decayRate]} 
+                          value={[trustSettings.decayRate]} 
                           max={20} 
                           step={1} 
                           className="py-2 [&>.range]:bg-amber-500"
@@ -548,7 +612,7 @@ export default function Config() {
                           <span className="font-mono text-xl text-purple-500 font-bold">{trustSettings.reputationWeight}%</span>
                        </div>
                        <Slider 
-                          defaultValue={[trustSettings.reputationWeight]} 
+                          value={[trustSettings.reputationWeight]} 
                           max={100} 
                           step={1} 
                           className="py-2 [&>.range]:bg-purple-500"
@@ -558,7 +622,11 @@ export default function Config() {
                  </Card>
 
                  <div className="flex justify-between items-center">
-                    <Button variant="outline" className="border-[#2D3548] text-muted-foreground hover:text-white hover:bg-[#1A2032]">
+                    <Button 
+                      variant="outline" 
+                      className="border-[#2D3548] text-muted-foreground hover:text-white hover:bg-[#1A2032]"
+                      onClick={handleResetToDefaults}
+                    >
                        <RotateCcw className="w-4 h-4 mr-2" /> Reset to Defaults
                     </Button>
                     <div className="flex gap-4">
@@ -630,11 +698,18 @@ export default function Config() {
             </div>
             <div className="space-y-2">
                <Label>Initial Trust Score</Label>
-               <Input type="number" defaultValue={50} className="bg-[#0A0E1A] border-[#2D3548] text-white" />
+               <Input 
+                 type="number" 
+                 value={newAgentTrust} 
+                 onChange={(e) => setNewAgentTrust(parseInt(e.target.value) || 50)}
+                 min={0}
+                 max={100}
+                 className="bg-[#0A0E1A] border-[#2D3548] text-white" 
+               />
             </div>
             <div className="space-y-2">
                <Label>Layer Assignment</Label>
-               <Select defaultValue="Creator">
+               <Select value={newAgentLayer} onValueChange={setNewAgentLayer}>
                   <SelectTrigger className="bg-[#0A0E1A] border-[#2D3548] text-white">
                      <SelectValue placeholder="Select layer" />
                   </SelectTrigger>
