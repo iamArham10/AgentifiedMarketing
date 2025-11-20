@@ -17,7 +17,9 @@ import {
   BarChart3,
   FileText,
   ChevronDown,
-  MoreHorizontal
+  MoreHorizontal,
+  Target,
+  Heart
 } from "lucide-react";
 import { 
   LineChart, 
@@ -43,11 +45,11 @@ import { useToast } from "@/hooks/use-toast";
 // --- Mock Data ---
 
 const CAMPAIGNS = [
-  { id: "cm1", name: "Q4 Sneaker Launch", ctr: 3.94, conversions: 147, roi: 284, status: "active", duration: "7/14 d", data: [2.1, 2.4, 2.8, 3.1, 3.5, 3.8, 3.94] },
-  { id: "cm2", name: "Fall Promo", ctr: 2.87, conversions: 89, roi: 156, status: "completed", duration: "14/14 d", data: [1.8, 2.0, 2.2, 2.5, 2.4, 2.7, 2.87] },
-  { id: "cm3", name: "Summer Sale", ctr: 4.12, conversions: 203, roi: 312, status: "completed", duration: "14/14 d", data: [2.5, 3.0, 3.5, 3.8, 4.0, 4.2, 4.12] },
-  { id: "cm4", name: "Brand Awareness Q3", ctr: 1.85, conversions: 45, roi: 110, status: "completed", duration: "30/30 d", data: [1.2, 1.4, 1.5, 1.7, 1.8, 1.85] },
-  { id: "cm5", name: "Flash Sale", ctr: 5.23, conversions: 312, roi: 450, status: "completed", duration: "3/3 d", data: [3.0, 4.5, 5.0, 5.23] },
+  { id: "cm1", name: "Q4 Sneaker Launch", ctr: 3.94, conversions: 147, roi: 284, status: "active", duration: "7/14 d", data: [2.1, 2.4, 2.8, 3.1, 3.5, 3.8, 3.94], goalType: 'traffic', goalProgress: 87 },
+  { id: "cm2", name: "Fall Promo", ctr: 2.87, conversions: 89, roi: 156, status: "completed", duration: "14/14 d", data: [1.8, 2.0, 2.2, 2.5, 2.4, 2.7, 2.87], goalType: 'conversions', goalProgress: 134 },
+  { id: "cm3", name: "Summer Sale", ctr: 4.12, conversions: 203, roi: 312, status: "completed", duration: "14/14 d", data: [2.5, 3.0, 3.5, 3.8, 4.0, 4.2, 4.12], goalType: 'traffic', goalProgress: 112 },
+  { id: "cm4", name: "Brand Awareness Q3", ctr: 1.85, conversions: 45, roi: 110, status: "completed", duration: "30/30 d", data: [1.2, 1.4, 1.5, 1.7, 1.8, 1.85], goalType: 'engagement', goalProgress: 42 },
+  { id: "cm5", name: "Flash Sale", ctr: 5.23, conversions: 312, roi: 450, status: "completed", duration: "3/3 d", data: [3.0, 4.5, 5.0, 5.23], goalType: 'conversions', goalProgress: 156 },
 ];
 
 const AGENT_PERFORMANCE = [
@@ -250,6 +252,7 @@ export default function Analytics() {
                 <th className="px-4 py-3 font-medium">CTR Trend</th>
                 <th className="px-4 py-3 font-medium">Conversions</th>
                 <th className="px-4 py-3 font-medium">ROI</th>
+                <th className="px-4 py-3 font-medium">Goal Achievement</th>
                 <th className="px-4 py-3 font-medium">Status</th>
                 <th className="px-4 py-3 font-medium rounded-tr-lg">Duration</th>
               </tr>
@@ -268,6 +271,27 @@ export default function Analytics() {
                   </td>
                   <td className="px-4 py-4 text-white">{campaign.conversions}</td>
                   <td className="px-4 py-4 text-emerald-500 font-medium">+{campaign.roi}%</td>
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-2">
+                      {campaign.goalType === 'traffic' && <TrendingUp className="w-4 h-4 text-primary" />}
+                      {campaign.goalType === 'conversions' && <Target className="w-4 h-4 text-primary" />}
+                      {campaign.goalType === 'engagement' && <Heart className="w-4 h-4 text-primary" />}
+                      <span 
+                        className={`font-medium ${
+                          campaign.goalProgress >= 100 ? 'text-emerald-500' :
+                          campaign.goalProgress >= 75 ? 'text-blue-500' :
+                          campaign.goalProgress >= 50 ? 'text-amber-500' :
+                          'text-red-500'
+                        }`}
+                      >
+                        {campaign.goalProgress}%
+                      </span>
+                      {campaign.goalProgress >= 100 && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+                      {campaign.goalProgress >= 75 && campaign.goalProgress < 100 && <TrendingUp className="w-4 h-4 text-blue-500" />}
+                      {campaign.goalProgress >= 50 && campaign.goalProgress < 75 && <Clock className="w-4 h-4 text-amber-500" />}
+                      {campaign.goalProgress < 50 && <AlertTriangle className="w-4 h-4 text-red-500" />}
+                    </div>
+                  </td>
                   <td className="px-4 py-4">
                     <Badge 
                       variant="outline" 

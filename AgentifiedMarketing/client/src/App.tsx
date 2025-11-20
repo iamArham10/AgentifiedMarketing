@@ -13,6 +13,7 @@ import ApprovalQueue from "@/pages/ApprovalQueue";
 import Analytics from "@/pages/Analytics";
 import Config from "@/pages/Config";
 import Settings from "@/pages/Settings";
+import Landing from "@/pages/Landing";
 
 // Placeholder for missing pages
 const PlaceholderPage = ({ title }: { title: string }) => (
@@ -30,26 +31,31 @@ const PlaceholderPage = ({ title }: { title: string }) => (
 
 function Router() {
   return (
-    <Layout>
-      <Switch>
-        <Route path="/" component={Dashboard} />
-        <Route path="/campaign-builder" component={CampaignBuilder} />
-        <Route path="/agent-hub" component={AgentHub} />
-        <Route path="/monitoring" component={CampaignMonitoring} />
-        <Route path="/approvals" component={ApprovalQueue} />
-        <Route path="/analytics" component={Analytics} />
-        <Route path="/config" component={Config} />
-        
-        {/* Routes for sidebar items that don't have full specs yet */}
-        <Route path="/agents">
-            {/* Redirect legacy route to new hub */}
-            <AgentHub />
-        </Route>
-        <Route path="/settings" component={Settings} />
-        
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
+    <Switch>
+      <Route path="/landing" component={Landing} />
+      <Route>
+        <Layout>
+          <Switch>
+            <Route path="/" component={Dashboard} />
+            <Route path="/campaign-builder" component={CampaignBuilder} />
+            <Route path="/agent-hub" component={AgentHub} />
+            <Route path="/monitoring" component={CampaignMonitoring} />
+            <Route path="/approvals" component={ApprovalQueue} />
+            <Route path="/analytics" component={Analytics} />
+            <Route path="/config" component={Config} />
+            
+            {/* Routes for sidebar items that don't have full specs yet */}
+            <Route path="/agents">
+                {/* Redirect legacy route to new hub */}
+                <AgentHub />
+            </Route>
+            <Route path="/settings" component={Settings} />
+            
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
+      </Route>
+    </Switch>
   );
 }
 

@@ -13,7 +13,9 @@ import {
   Linkedin,
   Bot,
   Search,
-  Activity
+  Activity,
+  Target,
+  TrendingUp
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,6 +58,16 @@ export default function CampaignBuilder() {
       setIsInitializing(false);
       setShowSuccess(true);
     }, 1500);
+  };
+
+  const handleCustomOrchestration = () => {
+    setShowSuccess(false);
+    setLocation("/agent-hub");
+  };
+
+  const handleBaseOrchestration = () => {
+    setShowSuccess(false);
+    setLocation("/monitoring");
   };
 
   return (
@@ -136,6 +148,44 @@ export default function CampaignBuilder() {
       {/* Right Sidebar: Workflow Preview */}
       <div className="w-[320px] shrink-0">
         <div className="sticky top-24 space-y-4">
+            {/* Campaign Goals Card */}
+            <div className="bg-[#1A2032] border border-border rounded-xl p-6">
+                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-6">Campaign Goals</h3>
+                
+                {/* Primary Goal Display */}
+                <div className="space-y-3 mb-6">
+                    <div className="flex items-start gap-3">
+                        <TrendingUp className="w-5 h-5 text-primary mt-1 shrink-0" />
+                        <div className="flex-1">
+                            <div className="flex items-start justify-between gap-2">
+                                <span className="font-medium text-white">Website Traffic</span>
+                                <span className="text-2xl font-bold text-primary">+30%</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground mt-1">Target: 13,000 visits</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-border mb-4"></div>
+
+                {/* Secondary Goals */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                    <Badge className="bg-[#131825] border border-border text-xs px-3 py-1.5 rounded-full hover:bg-[#131825]">
+                        CTR ≥ 2.5%
+                    </Badge>
+                    <Badge className="bg-[#131825] border border-border text-xs px-3 py-1.5 rounded-full hover:bg-[#131825]">
+                        CPA ≤ $25
+                    </Badge>
+                </div>
+
+                {/* Status Indicator */}
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <span className="text-xs text-emerald-400">Goals validated by Strategist Agent</span>
+                </div>
+            </div>
+
             <div className="bg-[#1A2032] border border-border rounded-xl p-6">
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-6">Agent Workflow Preview</h3>
                 
@@ -194,13 +244,22 @@ export default function CampaignBuilder() {
                     </div>
                 </div>
 
-                <Button 
-                    className="w-full bg-primary hover:bg-primary/90"
-                    onClick={() => setLocation("/")}
-                >
-                    View Agent Orchestration <ChevronRight className="w-4 h-4 ml-1" />
-                </Button>
-                <p className="text-xs text-muted-foreground">Redirecting in 5s...</p>
+                <div className="w-full flex flex-col gap-3">
+                    <Button 
+                        className="w-full bg-primary hover:bg-primary/90"
+                        onClick={handleCustomOrchestration}
+                    >
+                        Orchestrate Agents Yourself <ChevronRight className="w-4 h-4 ml-1" />
+                    </Button>
+                    <Button 
+                        variant="outline"
+                        className="w-full border-emerald-500/40 text-emerald-400 hover:text-white hover:bg-emerald-500/10"
+                        onClick={handleBaseOrchestration}
+                    >
+                        Use Base Orchestration <ChevronRight className="w-4 h-4 ml-1" />
+                    </Button>
+                </div>
+                <p className="text-xs text-muted-foreground">Choose how this campaign should be orchestrated.</p>
             </div>
         </DialogContent>
       </Dialog>
@@ -248,6 +307,137 @@ function StepConfiguration() {
                         <PlatformCard icon={Twitter} name="Twitter" connected />
                         <PlatformCard icon={Linkedin} name="LinkedIn" connected={false} />
                     </div>
+                </div>
+
+                {/* Campaign Goals Section */}
+                <div className="border-t border-border pt-6 space-y-6">
+                    <div className="space-y-1">
+                        <h3 className="text-lg font-semibold text-white">Campaign Goals</h3>
+                        <p className="text-sm text-muted-foreground">Define success metrics for this campaign</p>
+                    </div>
+
+                    {/* Primary Goal */}
+                    <div className="space-y-4">
+                        <Label>Primary Goal</Label>
+                        <Select defaultValue="traffic">
+                            <SelectTrigger className="bg-[#0A0E1A] border-[#2D3548]">
+                                <SelectValue placeholder="Select primary goal" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-[#1A2032] border border-border text-white">
+                                <SelectItem value="traffic">Website Traffic</SelectItem>
+                                <SelectItem value="conversions">Conversions</SelectItem>
+                                <SelectItem value="engagement">Engagement</SelectItem>
+                                <SelectItem value="leads">Lead Generation</SelectItem>
+                                <SelectItem value="awareness">Brand Awareness</SelectItem>
+                                <SelectItem value="sales">Sales Revenue</SelectItem>
+                            </SelectContent>
+                        </Select>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label className="text-sm text-muted-foreground">Current Baseline <span className="text-xs">(optional)</span></Label>
+                                <Input 
+                                    placeholder="10,000" 
+                                    className="bg-[#0A0E1A] border-[#2D3548] focus:border-primary"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label className="text-sm text-muted-foreground">Target Increase</Label>
+                                <div className="flex gap-2">
+                                    <Input 
+                                        defaultValue="30" 
+                                        className="bg-[#0A0E1A] border-[#2D3548] focus:border-primary flex-1"
+                                    />
+                                    <Select defaultValue="percent">
+                                        <SelectTrigger className="bg-[#0A0E1A] border-[#2D3548] w-24">
+                                            <SelectValue />
+                                        </SelectTrigger>
+                                        <SelectContent className="bg-[#1A2032] border border-border text-white">
+                                            <SelectItem value="percent">%</SelectItem>
+                                            <SelectItem value="absolute">absolute #</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p className="text-sm text-muted-foreground">
+                            Target: <span className="text-white font-medium">13,000 visits per month</span>
+                        </p>
+                    </div>
+
+                    {/* Secondary Goals */}
+                    <div className="space-y-3">
+                        <Label className="flex items-center gap-2">
+                            Secondary Goals 
+                            <Badge variant="outline" className="text-[10px] text-muted-foreground border-border">Optional</Badge>
+                        </Label>
+                        
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-3 p-3 bg-[#0A0E1A] rounded-lg border border-[#2D3548]">
+                                <Checkbox defaultChecked id="goal-ctr" />
+                                <label htmlFor="goal-ctr" className="flex items-center gap-2 text-sm cursor-pointer flex-1">
+                                    Achieve CTR above
+                                    <Input 
+                                        defaultValue="2.5" 
+                                        className="w-16 h-8 bg-[#131825] border-[#2D3548] px-2 text-center"
+                                    />
+                                    %
+                                </label>
+                            </div>
+
+                            <div className="flex items-center gap-3 p-3 bg-[#0A0E1A] rounded-lg border border-[#2D3548]">
+                                <Checkbox defaultChecked id="goal-cpa" />
+                                <label htmlFor="goal-cpa" className="flex items-center gap-2 text-sm cursor-pointer flex-1">
+                                    Keep CPA below $
+                                    <Input 
+                                        defaultValue="25" 
+                                        className="w-16 h-8 bg-[#131825] border-[#2D3548] px-2 text-center"
+                                    />
+                                </label>
+                            </div>
+
+                            <div className="flex items-center gap-3 p-3 bg-[#0A0E1A] rounded-lg border border-[#2D3548]">
+                                <Checkbox id="goal-roas" />
+                                <label htmlFor="goal-roas" className="flex items-center gap-2 text-sm cursor-pointer flex-1">
+                                    Minimum ROAS
+                                    <Input 
+                                        defaultValue="3" 
+                                        className="w-16 h-8 bg-[#131825] border-[#2D3548] px-2 text-center"
+                                    />
+                                    x
+                                </label>
+                            </div>
+
+                            <div className="flex items-center gap-3 p-3 bg-[#0A0E1A] rounded-lg border border-[#2D3548]">
+                                <Checkbox id="goal-impressions" />
+                                <label htmlFor="goal-impressions" className="flex items-center gap-2 text-sm cursor-pointer flex-1">
+                                    Reach at least
+                                    <Input 
+                                        defaultValue="50000" 
+                                        className="w-24 h-8 bg-[#131825] border-[#2D3548] px-2 text-center"
+                                    />
+                                    impressions
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* AI Validation Card */}
+                    <Card className="bg-[#131825] border-primary/20 p-4">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                <Target className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                                <div className="font-medium text-white text-sm">AI Goal Validation</div>
+                                <div className="text-xs text-muted-foreground mt-0.5">
+                                    Strategist Agent will validate goals against industry benchmarks
+                                </div>
+                            </div>
+                            <Switch defaultChecked />
+                        </div>
+                    </Card>
                 </div>
             </div>
         </div>

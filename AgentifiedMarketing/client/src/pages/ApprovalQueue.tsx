@@ -19,7 +19,8 @@ import {
   MessageSquare,
   Shield,
   Zap,
-  Filter
+  Filter,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -248,6 +249,45 @@ export default function ApprovalQueue() {
             {/* Content Preview Tabs */}
             <div className="flex-1 overflow-y-auto">
               <div className="p-6">
+                {/* Goals Context Section */}
+                <Card className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-primary/30 rounded-lg p-5 mb-6">
+                  <div className="flex items-start justify-between gap-6">
+                    {/* Left Section */}
+                    <div className="flex-1">
+                      <div className="text-xs text-primary uppercase tracking-wide font-semibold mb-2">
+                        OPTIMIZING FOR
+                      </div>
+                      <div className="text-xl font-bold text-white mb-1">
+                        +30% Website Traffic
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Target: 13,000 monthly visits
+                      </div>
+                    </div>
+
+                    {/* Right Section - Secondary Goals */}
+                    <div className="flex flex-col gap-2">
+                      <Badge className="bg-[#131825] border border-border text-xs px-3 py-1.5 hover:bg-[#131825]">
+                        CTR ≥ 2.5%
+                      </Badge>
+                      <Badge className="bg-[#131825] border border-border text-xs px-3 py-1.5 hover:bg-[#131825]">
+                        CPA ≤ $25
+                      </Badge>
+                    </div>
+                  </div>
+
+                  {/* Bottom Row */}
+                  <div className="flex items-center gap-2 mt-4 pt-4 border-t border-primary/20">
+                    <Sparkles className="w-4 h-4 text-primary shrink-0" />
+                    <span className="text-xs text-muted-foreground flex-1">
+                      Agents optimized for these goals
+                    </span>
+                    <span className="text-xs text-emerald-400 font-medium">
+                      94% confidence
+                    </span>
+                  </div>
+                </Card>
+
                 <Tabs defaultValue="copy" className="space-y-6" onValueChange={setActiveTab}>
                   <TabsList className="bg-[#131825] border border-[#2D3548] w-full justify-start h-auto p-1">
                     <TabsTrigger value="copy" className="py-2 px-4 data-[state=active]:bg-[#1A2032] text-gray-400 data-[state=active]:text-white">Ad Copy</TabsTrigger>

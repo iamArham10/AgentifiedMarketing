@@ -69,10 +69,13 @@ const PLATFORM_DATA = [
 
 const TIMELINE_EVENTS = [
   { id: 1, time: '16:08', agent: 'Analytics Agent #4', type: 'info', title: 'Updated CTR projection → 3.9% (↑ from 3.8%)', reason: 'First 15 minutes showing stronger engagement than historical baseline.' },
-  { id: 2, time: '16:02', agent: 'Deployment Agent #6', type: 'success', title: 'Twitter campaign metrics synced', reason: 'API handshake successful. Data stream active.' },
-  { id: 3, time: '15:57', agent: 'Analytics Agent #4', type: 'success', title: 'First conversion detected! 🎉', reason: 'User flow: Twitter Ad > Landing Page > Checkout.' },
-  { id: 4, time: '15:52', agent: 'Deployment Agent #6', type: 'info', title: 'Campaign published successfully', reason: 'All 3 variants pushed to Meta and Twitter ad managers.' },
-  { id: 5, time: '15:51', agent: 'Approval System', type: 'warning', title: 'Human approval received (sarah@brand.com)', reason: 'Manual override of Critic Agent #2 concern.' },
+  { id: 2, time: '16:05', agent: 'Strategist Agent #1', type: 'success', title: 'Traffic goal pace: 87% on track', reason: 'Current trajectory suggests achieving 11,310 of 13,000 target visits by campaign end.' },
+  { id: 3, time: '16:02', agent: 'Deployment Agent #6', type: 'success', title: 'Twitter campaign metrics synced', reason: 'API handshake successful. Data stream active.' },
+  { id: 4, time: '15:58', agent: 'Analytics Agent #4', type: 'info', title: 'CTR exceeds goal threshold (2.8% vs 2.5% target)', reason: 'Secondary goal achieved. Variant A performing above expectations.' },
+  { id: 5, time: '15:57', agent: 'Analytics Agent #4', type: 'success', title: 'First conversion detected! 🎉', reason: 'User flow: Twitter Ad > Landing Page > Checkout.' },
+  { id: 6, time: '15:55', agent: 'Strategist Agent #1', type: 'warning', title: 'CPA approaching limit ($23 vs $25 max)', reason: 'Monitoring bid adjustments to maintain cost efficiency.' },
+  { id: 7, time: '15:52', agent: 'Deployment Agent #6', type: 'info', title: 'Campaign published successfully', reason: 'All 3 variants pushed to Meta and Twitter ad managers.' },
+  { id: 8, time: '15:51', agent: 'Approval System', type: 'warning', title: 'Human approval received (sarah@brand.com)', reason: 'Manual override of Critic Agent #2 concern.' },
 ];
 
 const ASSETS = [
@@ -259,28 +262,55 @@ export default function CampaignMonitoring() {
 
                     <Card className="bg-[#1A2032] border border-[#2D3548] p-6">
                         <h3 className="text-lg font-semibold text-white mb-6">Goal Progress</h3>
-                        <div className="flex justify-center gap-8">
-                            {/* Circular Progress 1 */}
-                            <div className="relative w-24 h-24 flex items-center justify-center">
-                                <svg className="w-full h-full transform -rotate-90">
-                                    <circle cx="48" cy="48" r="40" stroke="#0A0E1A" strokeWidth="8" fill="transparent" />
-                                    <circle cx="48" cy="48" r="40" stroke="#3B82F6" strokeWidth="8" fill="transparent" strokeDasharray="251.2" strokeDashoffset={251.2 * (1 - 0.12)} strokeLinecap="round" />
-                                </svg>
-                                <div className="absolute text-center">
-                                    <div className="text-xl font-bold text-white">12%</div>
+                        
+                        {/* Goal Info Header */}
+                        <div className="text-sm font-medium text-white mb-4 text-center">
+                            🎯 Primary Goal: +30% Website Traffic
+                        </div>
+
+                        <div className="flex flex-col items-center gap-6">
+                            <div className="flex justify-center gap-8">
+                                {/* Circular Progress 1 - Traffic Goal */}
+                                <div className="relative w-24 h-24 flex items-center justify-center">
+                                    <svg className="w-full h-full transform -rotate-90">
+                                        <circle cx="48" cy="48" r="40" stroke="#0A0E1A" strokeWidth="8" fill="transparent" />
+                                        <circle cx="48" cy="48" r="40" stroke="#3B82F6" strokeWidth="8" fill="transparent" strokeDasharray="251.2" strokeDashoffset={251.2 * (1 - 0.12)} strokeLinecap="round" />
+                                    </svg>
+                                    <div className="absolute text-center">
+                                        <div className="text-xl font-bold text-white">12%</div>
+                                    </div>
+                                    <div className="absolute -bottom-12 w-32 text-center">
+                                        <div className="text-xs font-medium text-muted-foreground">Traffic Goal</div>
+                                        <div className="text-xs text-muted-foreground mt-0.5">1,560 / 13,000 visits</div>
+                                    </div>
                                 </div>
-                                <div className="absolute -bottom-8 w-32 text-center text-xs font-medium text-muted-foreground">Traffic Goal</div>
+                                
+                                {/* Circular Progress 2 - CTR Goal */}
+                                <div className="relative w-24 h-24 flex items-center justify-center">
+                                    <svg className="w-full h-full transform -rotate-90">
+                                        <circle cx="48" cy="48" r="40" stroke="#0A0E1A" strokeWidth="8" fill="transparent" />
+                                        <circle cx="48" cy="48" r="40" stroke="#3B82F6" strokeWidth="8" fill="transparent" strokeDasharray="251.2" strokeDashoffset={251.2 * (1 - 0.64)} strokeLinecap="round" />
+                                    </svg>
+                                    <div className="absolute text-center">
+                                        <div className="text-xl font-bold text-white">64%</div>
+                                    </div>
+                                    <div className="absolute -bottom-12 w-32 text-center">
+                                        <div className="text-xs font-medium text-muted-foreground">CTR Goal</div>
+                                        <div className="text-xs text-muted-foreground mt-0.5">2.5% target</div>
+                                    </div>
+                                </div>
                             </div>
-                             {/* Circular Progress 2 */}
-                             <div className="relative w-24 h-24 flex items-center justify-center">
-                                <svg className="w-full h-full transform -rotate-90">
-                                    <circle cx="48" cy="48" r="40" stroke="#0A0E1A" strokeWidth="8" fill="transparent" />
-                                    <circle cx="48" cy="48" r="40" stroke="#10B981" strokeWidth="8" fill="transparent" strokeDasharray="251.2" strokeDashoffset={251.2 * (1 - 0.036)} strokeLinecap="round" />
-                                </svg>
-                                <div className="absolute text-center">
-                                    <div className="text-xl font-bold text-white">3.6%</div>
+
+                            {/* Goal Status Badges */}
+                            <div className="flex gap-3 mt-8">
+                                <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-full">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+                                    <span className="text-xs font-medium text-amber-400">Behind Target</span>
                                 </div>
-                                <div className="absolute -bottom-8 w-32 text-center text-xs font-medium text-muted-foreground">Email Signups</div>
+                                <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                    <span className="text-xs font-medium text-emerald-400">On Track</span>
+                                </div>
                             </div>
                         </div>
                     </Card>
